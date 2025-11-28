@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+int main() {
+ int firstNumber, secondNumber, GreatestCommonDivisor = 1;
+ cout << "Enter two integers: ";
+ cin >> firstNumber >> secondNumber;
+ int minimumValue;
+ if (firstNumber < secondNumber) {
+ minimumValue = firstNumber;
+ }
+ else {
+ minimumValue = secondNumber;
+ }
+ for (int i = 1; i <= minimumValue; i++) {
+ if (firstNumber % i == 0 && secondNumber % i == 0) {
+ GreatestCommonDivisor = i;
+ }
+ }
+ cout << "Greatest Common Divisor = " << GreatestCommonDivisor << endl;
+ return 0;
+}
