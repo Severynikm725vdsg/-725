@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the number of Fibonacci numbers: ";
+    cin >> n;
+
+    int a = 0, b = 1, count = 0;
+
+    while (count < n) {
+        cout << a << " ";
+        int next_number = a + b;
+        a = b;
+        b = next_number;
+        count++;
+    }
+
+    return 0;
+}
