@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int array[15];
+    
+    cout << "Enter 15 numbers:" << endl;
+    for (int i = 0; i < 15; i++)
+    {
+        cin >> array[i];
+    }
+
+    int min = array[0];
+    int max = array[0];
+    int minIndex = 0;
+    int maxIndex = 0;
+
+    for (int i = 0; i < 15; i++)
+    {
+        if (array[i] < min)
+        {
+            min = array[i];
+            minIndex = i;
+        }
+        if (array[i] > max)
+        {
+            max = array[i];
+            maxIndex = i;
+        }
+    }
+
+    cout << "Min: " << min << " index: " << minIndex + 1 << endl;
+    cout << "Max: " << max << " index: " << maxIndex + 1 << endl;
+
+    return 0;
+}
