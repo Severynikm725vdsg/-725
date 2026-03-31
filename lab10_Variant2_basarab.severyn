@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+struct Employee
+{
+    string Surname;
+    int Number;
+    int Month;
+};
+
+int main()
+{
+    Employee arr[3];
+
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "Enter surname: ";
+        cin >> arr[i].Surname;
+
+        cout << "Enter number: ";
+        cin >> arr[i].Number;
+
+        cout << "Enter birth month: ";
+        cin >> arr[i].Month;
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "Surname: " << arr[i].Surname << endl;
+        cout << "Number: " << arr[i].Number << endl;
+        cout << "Month: " << arr[i].Month << endl;
+    }
+
+    int m;
+    cout << "Enter month: ";
+    cin >> m;
+
+    for (int i = 0; i < 3; i++)
+    {
+        if (arr[i].Month == m)
+        {
+            cout << arr[i].Surname << " " << arr[i].Number << endl;
+        }
+    }
+
+    return 0;
+}
