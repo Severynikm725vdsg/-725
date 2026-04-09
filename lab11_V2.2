@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double* pointer1;
+    double* pointer2;
+
+    pointer1 = new double;
+    pointer2 = new double;
+
+    cout << "Enter two numbers: ";
+    cin >> *pointer1 >> *pointer2;
+
+    *pointer1 = *pointer1 * 2;
+
+    cout << "First number (x2): " << *pointer1 << endl;
+    cout << "Second number: " << *pointer2 << endl;
+
+    delete pointer1;
+    delete pointer2;
+
+    return 0;
+}
