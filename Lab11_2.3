@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, m;
+
+    cout << "Enter n: ";
+    cin >> n;
+
+    int* x = new int[n];
+
+    cout << "Enter elements of array x: ";
+    for (int i = 0; i < n; i++) 
+    {
+        cin >> x[i];
+    }
+
+    cout << "Enter m: ";
+    cin >> m;
+
+    int* y = new int[m];
+
+    cout << "Enter elements of array y: ";
+    for (int i = 0; i < m; i++) 
+    {
+        cin >> y[i];
+    }
+
+    int count = 0;
+    int value = x[1];
+
+    for (int i = 0; i < m; i++) 
+    {
+        if (y[i] == value) {
+            count++;
+        }
+    }
+
+    cout << "Count = " << count << endl;
+
+    delete[] x;
+    delete[] y;
+
+    return 0;
+}
