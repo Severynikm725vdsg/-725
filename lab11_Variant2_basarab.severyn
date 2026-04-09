@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b;
+
+    cout << "Enter a and b: ";
+    cin >> a >> b;
+
+    
+    int* pointera = &a;
+    int* pointerb = &b;
+
+    if (*pointera > *pointerb) 
+    {
+        *pointera = *pointera * 2;
+    }
+    else 
+    {
+        *pointerb = *pointerb / 2;
+    }
+
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+
+    return 0;
+}
