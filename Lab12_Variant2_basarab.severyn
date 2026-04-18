@@ -1,0 +1,66 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+    srand(time(0));
+
+    int matrix[5][5];
+
+    
+    cout << "Matrix:\n";
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            matrix[i][j] = rand() % 21 - 10; 
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    
+    int totalSum = 0;
+
+    for (int i = 0; i < 5; i++) {
+        bool allPositive = true;
+        int rowSum = 0;
+
+        for (int j = 0; j < 5; j++) {
+            if (matrix[i][j] <= 0) {
+                allPositive = false;
+            }
+            rowSum += matrix[i][j];
+        }
+
+        if (allPositive) {
+            totalSum += rowSum;
+        }
+    }
+
+    cout << "\nSum of rows with only positive numbers: " << totalSum << endl;
+
+  
+    int arr[25];
+    int k = 0;
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            arr[k] = matrix[i][j];
+            k++;
+        }
+    }
+
+  
+    int max = arr[0];
+
+    for (int i = 1; i < 25; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    cout << "Max element: " << max << endl;
+
+    return 0;
+}
