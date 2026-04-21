@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+double CalculateSequenceValue(int n)
+{
+    if (n == 1)
+    {
+        return 10.0;
+    }
+    return CalculateSequenceValue(n - 1) / 2.0;
+}
+
+int main()
+{
+    int n;
+    cout << "Enter n: ";
+    cin >> n;
+
+    if (n > 0)
+    {
+        double val = CalculateSequenceValue(n);
+        cout << "Value of member " << n << " is " << val << endl;
+    }
+    else
+    {
+        cout << "N must be greater than 0" << endl;
+    }
+
+    return 0;
+}
