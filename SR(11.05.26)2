@@ -1,0 +1,88 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+/*
+2. Клас "Трикутник".Створіть клас "Трикутник", який містить атрибути
+для зберігання довжин сторін. Реалізуйте методи для обчислення периметра і площі трикутника,
+а також метод для перевірки, чи є трикутник прямокутним.
+*/
+
+class Triangle {
+private:
+    double a;
+    double b;
+    double c;
+
+public:
+    Triangle(double A, double B, double C)
+        : a(A), b(B), c(C) {
+    }
+
+    void set_A(double value) {
+        a = value;
+    }
+
+    double get_A() {
+        return a;
+    }
+
+    void set_B(double value) {
+        b = value;
+    }
+
+    double get_B() {
+        return b;
+    }
+
+    void set_C(double value) {
+        c = value;
+    }
+
+    double get_C() {
+        return c;
+    }
+
+    double perimeter() {
+        return a + b + c;
+    }
+
+    double area() {
+        double p = perimeter() / 2;
+        return sqrt(p * (p - a) * (p - b) * (p - c));
+    }
+
+    bool is_Right() {
+        if (a * a + b * b == c * c) {
+            return true;
+        }
+
+        if (a * a + c * c == b * b) {
+            return true;
+        }
+
+        if (b * b + c * c == a * a) {
+            return true;
+        }
+
+        return false;
+    }
+
+    void show() {
+        cout << "Side a: " << a << endl;
+        cout << "Side b: " << b << endl;
+        cout << "Side c: " << c << endl;
+        cout << "Perimeter: " << perimeter() << endl;
+        cout << "Area: " << area() << endl;
+        cout << "Right triangle: " << (is_Right() ? "Yes" : "No") << endl;
+    }
+};
+
+int main() {
+    Triangle triangle1(3, 4, 5);
+
+    triangle1.show();
+
+    return 0;
+}
