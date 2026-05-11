@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+/*
+1. Клас "Студент".
+
+Створіть клас "Студент", який містить наступні атрибути:
+ім'я, вік, середній бал.
+
+Реалізуйте методи для встановлення та отримання значень
+кожного атрибута, а також метод для виведення інформації про студента.
+*/
+
+class Student {
+private:
+    string name;
+    int age;
+    double averagePoint;
+
+public:
+    Student(string Name, int Age, double AveragePoint)
+        : name(Name), age(Age), averagePoint(AveragePoint) {
+    }
+
+    void set_Name(string value) {
+        name = value;
+    }
+
+    string get_Name() {
+        return name;
+    }
+
+    void set_Age(int value) {
+        age = value;
+    }
+
+    int get_Age() {
+        return age;
+    }
+
+    void set_Average_Point(double value) {
+        averagePoint = value;
+    }
+
+    double get_Average_Point() {
+        return averagePoint;
+    }
+
+    void show() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Average point: " << averagePoint << endl;
+    }
+};
+
+int main() {
+    Student student1("Donald", 20, 10.3);
+
+    student1.show();
+
+    return 0;
+}
+
+
