@@ -1,0 +1,178 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Abiturient {
+    string surname;
+    string name;
+    string patronymic;
+    string address;
+    int marks[5];
+
+public:
+    void set_surname(string s) {
+        surname = s;
+    }
+
+    void set_name(string n) {
+        name = n;
+    }
+
+    void set_patronymic(string p) {
+        patronymic = p;
+    }
+
+    void set_address(string a) {
+        address = a;
+    }
+
+    void set_mark(int index, int mark) {
+        marks[index] = mark;
+    }
+
+    string get_surname() {
+        return surname;
+    }
+
+    string get_name() {
+        return name;
+    }
+
+    string get_patronymic() {
+        return patronymic;
+    }
+
+    string get_address() {
+        return address;
+    }
+
+    int get_mark(int index) {
+        return marks[index];
+    }
+
+    int get_sum() {
+        int sum = 0;
+
+        for (int i = 0; i < 5; i++) {
+            sum += marks[i];
+        }
+
+        return sum;
+    }
+
+    bool has_bad_marks() {
+        for (int i = 0; i < 5; i++) {
+            if (marks[i] < 3) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void show() {
+        cout << surname << " " << name << " " << patronymic << endl;
+        cout << "Address: " << address << endl;
+        cout << "Marks: ";
+
+        for (int i = 0; i < 5; i++) {
+            cout << marks[i] << " ";
+        }
+
+        cout << endl;
+        cout << "Sum: " << get_sum() << endl;
+    }
+};
+
+int main() {
+    int size;
+
+    cout << "Enter the number of applicants: ";
+    cin >> size;
+
+    Abiturient* applicants = new Abiturient[size];
+
+    for (int i = 0; i < size; i++) {
+        string surname, name, patronymic, address;
+        int mark;
+
+        cout << endl;
+        cout << "Enter surname: ";
+        cin >> surname;
+        applicants[i].set_surname(surname);
+
+        cout << "Enter name: ";
+        cin >> name;
+        applicants[i].set_name(name);
+
+        cout << "Enter patronymic: ";
+        cin >> patronymic;
+        applicants[i].set_patronymic(patronymic);
+
+        cout << "Enter address: ";
+        cin >> address;
+        applicants[i].set_address(address);
+
+        cout << "Enter 5 marks: ";
+        for (int j = 0; j < 5; j++) {
+            cin >> mark;
+            applicants[i].set_mark(j, mark);
+        }
+    }
+
+    cout << endl;
+    cout << "Applicants with bad marks:" << endl;
+
+    for (int i = 0; i < size; i++) {
+        if (applicants[i].has_bad_marks()) {
+            applicants[i].show();
+            cout << endl;
+        }
+    }
+
+    int minSum;
+
+    cout << "Enter the minimum sum of marks: ";
+    cin >> minSum;
+
+    cout << endl;
+    cout << "Applicants whose sum is not less than the given value:" << endl;
+
+    for (int i = 0; i < size; i++) {
+        if (applicants[i].get_sum() >= minSum) {
+            applicants[i].show();
+            cout << endl;
+        }
+    }
+
+    int count;
+
+    cout << "Enter the number of best applicants: ";
+    cin >> count;
+
+    if (count > size) {
+        count = size;
+    }
+
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (applicants[j].get_sum() < applicants[j + 1].get_sum()) {
+                Abiturient temp = applicants[j];
+                applicants[j] = applicants[j + 1];
+                applicants[j + 1] = temp;
+            }
+        }
+    }
+
+    cout << endl;
+    cout << "Best applicants:" << endl;
+
+    for (int i = 0; i < count; i++) {
+        applicants[i].show();
+        cout << endl;
+    }
+
+    delete[] applicants;
+
+    return 0;
+}
