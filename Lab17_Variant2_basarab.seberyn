@@ -1,0 +1,79 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Room
+{
+public:
+    Room(float);
+    void show_room();
+
+private:
+    float area;
+};
+
+Room::Room(float a)
+{
+    area = a;
+}
+
+void Room::show_room()
+{
+    cout << "Room area: " << area << " m^2" << endl;
+}
+
+class OneRoomApartment
+{
+public:
+    OneRoomApartment(float, float, int);
+    void show_apartment();
+
+protected:
+    Room room;
+    float kitchen_area;
+    int floor;
+};
+
+OneRoomApartment::OneRoomApartment(float r_area, float k_area, int fl)
+    : room(r_area)
+{
+    kitchen_area = k_area;
+    floor = fl;
+}
+
+void OneRoomApartment::show_apartment()
+{
+    room.show_room();
+    cout << "Kitchen area: " << kitchen_area << " m^2" << endl;
+    cout << "Floor: " << floor << endl;
+}
+
+class CityApartment : public OneRoomApartment
+{
+public:
+    CityApartment(string, float, float, int);
+    void show_city_apartment();
+
+private:
+    string city;
+};
+
+CityApartment::CityApartment(string c, float r_area, float k_area, int fl)
+    : OneRoomApartment(r_area, k_area, fl)
+{
+    city = c;
+}
+
+void CityApartment::show_city_apartment()
+{
+    cout << "City: " << city << endl;
+    show_apartment();
+}
+
+int main()
+{
+    CityApartment my_flat("Prague", 18.5, 7.2, 5);
+    my_flat.show_city_apartment();
+
+    return 0;
+}
