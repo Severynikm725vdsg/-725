@@ -1,0 +1,102 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Complex
+{
+    double real, imag;
+public:
+    Complex() {}
+
+    Complex(double r, double i)
+    {
+        real = r;
+        imag = i;
+    }
+
+    void show()
+    {
+        if (imag >= 0)
+            cout << real << " + " << imag << "i" << endl;
+        else
+            cout << real << " - " << (-imag) << "i" << endl;
+    }
+
+    Complex operator+(Complex op2);
+    Complex operator=(Complex op2);
+    bool operator==(Complex op2);
+    bool operator<(Complex op2);
+    bool operator>(Complex op2);
+};
+
+
+Complex Complex::operator+(Complex op2)
+{
+    Complex temp;
+    temp.real = real + op2.real;
+    temp.imag = imag + op2.imag;
+    return temp;
+}
+
+
+Complex Complex::operator=(Complex op2)
+{
+    real = op2.real;
+    imag = op2.imag;
+    return *this;
+}
+
+
+bool Complex::operator==(Complex op2)
+{
+    double mod1 = real * real + imag * imag;
+    double mod2 = op2.real * op2.real + op2.imag * op2.imag;
+    return mod1 == mod2;
+}
+
+
+bool Complex::operator<(Complex op2)
+{
+    double mod1 = real * real + imag * imag;
+    double mod2 = op2.real * op2.real + op2.imag * op2.imag;
+    return mod1 < mod2;
+}
+
+
+bool Complex::operator>(Complex op2)
+{
+    double mod1 = real * real + imag * imag;
+    double mod2 = op2.real * op2.real + op2.imag * op2.imag;
+    return mod1 > mod2;
+}
+
+int main()
+{
+    Complex ob1(3.0, 4.0), ob2(1.0, 2.0), ob3(0.0, 0.0);
+
+    cout << "Parameters of ob1: " << endl;
+    ob1.show();
+
+    cout << "Parameters of ob2: " << endl;
+    ob2.show();
+
+    ob3 = ob1 + ob2;
+    cout << "Result of ob1 + ob2: " << endl;
+    ob3.show();
+
+    ob3 = ob1;
+    cout << "Parameters of ob3 after assignment of ob1: " << endl;
+    ob3.show();
+
+    cout << "ob1 == ob2: " << (ob1 == ob2 ? "true" : "false") << endl;
+    cout << "ob1 == ob3: " << (ob1 == ob3 ? "true" : "false") << endl;
+
+    cout << "ob1 < ob2: " << (ob1 < ob2 ? "true" : "false") << endl;
+    cout << "ob2 < ob1: " << (ob2 < ob1 ? "true" : "false") << endl;
+
+    cout << "ob1 > ob2: " << (ob1 > ob2 ? "true" : "false") << endl;
+    cout << "ob2 > ob1: " << (ob2 > ob1 ? "true" : "false") << endl;
+
+    return 0;
+}
