@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+void Powers(T x, T& square, T& cube, T& fourth)
+{
+    square = x * x;
+    cube = x * x * x;
+    fourth = x * x * x * x;
+}
+
+int main()
+{
+    int n;
+    cout << "Enter an integer: ";
+    cin >> n;
+
+    int sq_i, cb_i, ft_i;
+    Powers(n, sq_i, cb_i, ft_i);
+
+    cout << "Square      = " << sq_i << endl;
+    cout << "Cube        = " << cb_i << endl;
+    cout << "4th power   = " << ft_i << endl;
+    cout << endl;
+
+    double d;
+    cout << "Enter a real number: ";
+    cin >> d;
+
+    double sq_d, cb_d, ft_d;
+    Powers(d, sq_d, cb_d, ft_d);
+
+    cout << "Square      = " << sq_d << endl;
+    cout << "Cube        = " << cb_d << endl;
+    cout << "4th power   = " << ft_d << endl;
+
+    return 0;
+}
